@@ -1,12 +1,3 @@
-
-
-/*
-This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
-It is supposed to be strictly declarative and only uses a subset of QML. If you edit
-this file manually, you might introduce QML code that is not supported by Qt Design Studio.
-Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
-*/
-
 // framework imports
 import QtQuick 6.7
 import QtQuick.Controls 6.7
@@ -14,12 +5,13 @@ import QtQuick.Layouts
 import "./qml"
 
 
-
 ApplicationWindow {
     id: root
+
     width: 1920
     height: 1080
     visible: true
+
     Rectangle {
         id: rectangle
         color: "white"
@@ -34,9 +26,9 @@ ApplicationWindow {
             anchors.top: parent.top
             anchors.rightMargin: 40
             anchors.topMargin: 50
+            font.family: FontManager.victorMonoFamily
+            font.styleName: FontManager.boldFontStyle
             font.pixelSize: 48
-            font.styleName: "SemiBold"
-            font.family: "Victor Mono"
         }
 
         ColumnLayout {
@@ -260,12 +252,18 @@ ApplicationWindow {
                 id: robo_view
             }
 
-            Robo_view {
-                id: vis_cod
-            }
 
             Robo_view {
                 id: vis_sobre
+            }
+
+            Text {
+                id: vis_cod
+                color: "black"
+                text: "Red Referee, o brabo. \n Por: Lealdini"
+                x: 734
+                y: 250
+                font.pixelSize: 50
             }
         }
 

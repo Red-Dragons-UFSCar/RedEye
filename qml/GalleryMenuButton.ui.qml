@@ -24,8 +24,8 @@ T.Button {
         text: qsTr("Text")
         anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: 18
-        font.styleName: "SemiBold"
-        font.family: "Victor Mono"
+        font.family: FontManager.victorMonoFamily
+        font.styleName: FontManager.boldFontStyle
         color: "black"
         anchors.horizontalCenter: parent.horizontalCenter
     }
