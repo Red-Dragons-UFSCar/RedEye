@@ -1,0 +1,16 @@
+
+<RCC>
+	<qresource prefix="/">
+		<file>qml/GalleryMenuButton.ui.qml</file>
+		<file>src/img/logo-vermelha2.png</file>
+		<file>qml/RedRef.ui.qml</file>
+		<file>qml/Robo_view.qml</file>
+		<file>qml/RobotStatusDelegate.qml</file>
+		<file>Main.qml</file>
+		<file>src/fonts/VictorMono-Bold.ttf</file>
+		<file>src/fonts/VictorMono-Light.ttf</file>
+		<file>src/fonts/VictorMono-Medium.ttf</file>
+		<file>src/fonts/VictorMono-Regular.ttf</file>
+		<file>src/fonts/VictorMono-SemiBold.ttf</file>
+	</qresource>
+</RCC>
