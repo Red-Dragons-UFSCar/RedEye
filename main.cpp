@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QIcon>
+#include "robot.h"
 
 int main(int argc, char *argv[])
 {

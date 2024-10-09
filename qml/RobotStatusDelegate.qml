@@ -11,9 +11,12 @@ Item {
     property real robotY
     property real robotSpeed
     property bool isConnected
+    property real current
+    property int latency
+    property real transmission
 
     Rectangle {
-        width: parent.width + 400
+        width: parent.width + 800
         height: parent.height
         border.color: "lightgrey"
         color: "lightblue"
@@ -49,6 +52,22 @@ Item {
                 text: isConnected ? "Connected" : "Disconnected"
                 font.pointSize: 14
                 color: isConnected ? "green" : "red"
+            }
+
+            Text {
+                text: "Corrente: " + transmission
+                font.pointSize: 14
+
+            }
+
+            Text{
+                text: "Latencia: " + latency
+                font.pointSize: 14
+            }
+
+            Text{
+                text: "Qualidade: " + transmission
+                font.pointSize: 14
             }
         }
     }
