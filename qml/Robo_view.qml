@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-
+import com.example.robot 1.0
 Item {
     width: 800
     height: 600
@@ -8,7 +8,6 @@ Item {
     Column {
         anchors.left: parent.left
         spacing: 20
-
 
         // Title for the panel
         Text {
@@ -22,13 +21,17 @@ Item {
         ListView {
             width: parent.width
             height: parent.height * 0.8
-            model: 5  // Placeholder for number of robots, adjust as necessary
+            model: robotManager.robots  // Placeholder for number of robots, adjust as necessary
             delegate: RobotStatusDelegate {
-                robotId: index + 1
-                robotX: Math.random() * 100  // Placeholder values
-                robotY: Math.random() * 100  // Placeholder values
-                robotSpeed: Math.random() * 10  // Placeholder values
-                isConnected: index % 2 == 0  // Alternate connected statuses for now
+                robotId: 0
+                robotX: 0  // Placeholder values
+                robotY: 0// Placeholder values
+                robotSpeed: 0  // Placeholder values
+                isConnected: false  // Alternate connected statuses for now
+                current: 0
+                latency: 0
+                transmission: 0
+
             }
         }
     }

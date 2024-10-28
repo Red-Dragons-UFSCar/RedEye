@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-
+import com.example.robot 1.0
 Item {
     width: parent.width
     height: 50
@@ -14,6 +14,7 @@ Item {
     property real current
     property int latency
     property real transmission
+
 
     Rectangle {
         width: parent.width + 800
@@ -30,43 +31,43 @@ Item {
 
             // Robot ID
             Text {
-                text: "Robot ID: " + robotId
+                text: "Robot ID: " + robotManager.robots[index].robotId
                 font.bold: true
                 font.pointSize: 16
             }
 
             // Robot Coordinates
             Text {
-                text: "X: " + robotX.toFixed(2) + " Y: " + robotY.toFixed(2)
+                text: "X: " + robotManager.robots[index].x + " Y: " + robotManager.robots[index].y
                 font.pointSize: 14
             }
 
             // Robot Speed
             Text {
-                text: "Speed: " + robotSpeed.toFixed(2) + " m/s"
+                text: "Speed: " + robotManager.robots[index].speed
                 font.pointSize: 14
             }
 
             // Connection Status
             Text {
-                text: isConnected ? "Connected" : "Disconnected"
+                text: robotManager.robots[index].connectionStatus ? "Connected" : "Disconnected"
                 font.pointSize: 14
-                color: isConnected ? "green" : "red"
+                color: robotManager.robots[index].connectionStatus ? "green" : "red"
             }
 
             Text {
-                text: "Corrente: " + transmission
+                text: "Corrente: " + robotManager.robots[index].current
                 font.pointSize: 14
 
             }
 
             Text{
-                text: "Latencia: " + latency
+                text: "Latencia: " + robotManager.robots[index].latency
                 font.pointSize: 14
             }
 
             Text{
-                text: "Qualidade: " + transmission
+                text: "Qualidade: " + robotManager.robots[index].signalQuality
                 font.pointSize: 14
             }
         }
