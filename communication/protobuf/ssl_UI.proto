@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+
+
+message SSL_UI_ball {
+  required float  x          = 1;
+  required float  y          = 2;
+}
+
+message SSL_UI_Robot {
+  required uint32 robot_id    =  1;
+  required float  x           =  2;
+  required float  y           =  3;
+  required float  current     =  4;
+  required bool   connection_status     =  5;
+  required float  signal_quality      =  6;
+}
+
