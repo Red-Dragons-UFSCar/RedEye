@@ -26,6 +26,9 @@ qt_add_qml_module(appRedRefC
         qml/FontManager.qml
         SOURCES robot.h
         SOURCES RobotManager.h
+        SOURCES
+        SOURCES
+        SOURCES proto_listener.h proto_listener.cpp
 )
 
 # Add resources (e.g., images) via the .qrc file

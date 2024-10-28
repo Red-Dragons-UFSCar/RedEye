@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+
+message SSL_eletronica {
+  optional uint32 robot_id = 1;
+  optional float current = 2;
+  optional uint32 ping = 3;
+  optional bool status = 4;
+  optional float transmission = 5;
+}
+
+

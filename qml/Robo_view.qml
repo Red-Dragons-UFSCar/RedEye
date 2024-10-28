@@ -21,7 +21,7 @@ Item {
         ListView {
             width: parent.width
             height: parent.height * 0.8
-            model: robotManager.robots  // Placeholder for number of robots, adjust as necessary
+            model: 6 // Placeholder for number of robots, adjust as necessary
             delegate: RobotStatusDelegate {
                 robotId: 0
                 robotX: 0  // Placeholder values
