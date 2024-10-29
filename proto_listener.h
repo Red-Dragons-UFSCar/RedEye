@@ -33,8 +33,8 @@ private:
     QUdpSocket* m_socket_vision;
     QUdpSocket* m_socket_electronic;
 
-    void processVisionMessage(QByteArray data);
-    void processElectronicMessage(QByteArray data);
+    void processVisionMessage(const QByteArray& data);
+    void processElectronicMessage(const QByteArray& data);
 
 
 

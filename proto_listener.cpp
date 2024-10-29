@@ -34,8 +34,22 @@ void ProtoListener::onVisionDataReceived(){
     processVisionMessage(data);
 }
 
-void ProtoListener::processElectronicMessage(const QByteArray& data){
-    SSL_
-
+void ProtoListener::processElectronicMessage(const QByteArray& data) {
+    SSL_eletronica robotMessage;
+    if (robotMessage.ParseFromArray(data.data(), data.size())) {
+        // Update RobotManager with robot data from the electronic board
+        m_manager->updateRobot(robotMessage.robot_id(), robotMessage.x(), robotMessage.y(),
+                               robotMessage.current(), robotMessage.connection_status(),
+                               robotMessage.signal_quality());
+    }
 }
+
+void ProtoListener::processVisionMessage(const QByteArray& data) {
+    SSL_WrapperPacket vision_message;
+    if (ballMessage.ParseFromArray(data.data(), data.size())) {
+        // Update RobotManager with data from the vision software
+        m_manager->updateBallPosition(ballMessage.x(), ballMessage.y());
+    }
+}
+
 
