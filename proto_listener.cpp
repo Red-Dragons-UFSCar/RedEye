@@ -15,13 +15,22 @@ ProtoListener::~ProtoListener(){
     m_socket_vision->close();
 }
 
-void ProtoListener::startListeningElectro(int portElectro){
-    m_socket_electronic->connectToHost("localhost", portElectro);
+void ProtoListener::startListeningElectro(int portElectro) {
+    // Bind to localhost on the specified port for the electronic data
+    if (!m_socket_electronic->bind(QHostAddress::LocalHost, portElectro)) {
+        qWarning() << "Failed to bind electronic socket on port" << portElectro;
+    } else {
+        qDebug() << "Listening for electronic data on port" << portElectro;
+    }
 }
 
-void ProtoListener::startListeningVision(int portVision){
-    m_socket_vision->connectToHost("localhost", portVision);
-
+void ProtoListener::startListeningVision(int portVision) {
+    // Bind to localhost on the specified port for the vision data
+    if (!m_socket_vision->bind(QHostAddress::LocalHost, portVision)) {
+        qWarning() << "Failed to bind vision socket on port" << portVision;
+    } else {
+        qDebug() << "Listening for vision data on port" << portVision;
+    }
 }
 
 void ProtoListener::onElectronicDataReceived(){
@@ -37,19 +46,35 @@ void ProtoListener::onVisionDataReceived(){
 void ProtoListener::processElectronicMessage(const QByteArray& data) {
     SSL_eletronica robotMessage;
     if (robotMessage.ParseFromArray(data.data(), data.size())) {
-        // Update RobotManager with robot data from the electronic board
-        m_manager->updateRobot(robotMessage.robot_id(), robotMessage.x(), robotMessage.y(),
-                               robotMessage.current(), robotMessage.connection_status(),
-                               robotMessage.signal_quality());
+        // just an empty method for now
+        std::cout << "pass";
     }
 }
 
 void ProtoListener::processVisionMessage(const QByteArray& data) {
-    SSL_WrapperPacket vision_message;
-    if (ballMessage.ParseFromArray(data.data(), data.size())) {
-        // Update RobotManager with data from the vision software
-        m_manager->updateBallPosition(ballMessage.x(), ballMessage.y());
+    SSL_WrapperPacket visionMessage;
+    if (visionMessage.ParseFromArray(data.data(), data.size())) {
+        // Process robots
+        for (const auto& robot : visionMessage.detection().robots_blue()) {
+            int robotId = robot.robot_id();
+            double x = robot.x();
+            double y = robot.y();
+            m_manager->updateRobotPosition(robotId, x, y);  // Custom method in RobotManager
+        }
+
+        for (const auto& robot : visionMessage.detection().robots_yellow()) {
+            int robotId = robot.robot_id();
+            double x = robot.x();
+            double y = robot.y();
+            m_manager->updateRobotPosition(robotId, x, y);
+        }
+
+        // Process the ball as a "robot" with ID 0
+        if (!visionMessage.detection().balls().empty()) {
+            double x = visionMessage.detection().balls(0).x();
+            double y = visionMessage.detection().balls(0).y();
+            m_manager->updateRobotPosition(0, x, y);  // Using ID 0 for the ball
+        }
     }
 }
-
 

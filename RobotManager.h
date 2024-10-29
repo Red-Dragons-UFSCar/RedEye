@@ -1,6 +1,7 @@
 #ifndef ROBOTMANAGER_H
 #define ROBOTMANAGER_H
 
+#include <iostream>
 #include <QObject>
 #include <QQmlListProperty>
 #include <QtQuick>
@@ -26,6 +27,10 @@ public:
             return m_robots[index];
         }
         return nullptr;
+    }
+
+    void updateRobotPosition(int robotId, double x, double y){
+        std::cout << robotId << x << y;
     }
 
 private:

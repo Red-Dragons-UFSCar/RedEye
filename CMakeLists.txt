@@ -21,16 +21,31 @@ qt_add_qml_module(appRedRefC
     VERSION 1.0
     QML_FILES
         Main.qml
-        qml/GalleryMenuButton.ui.qml  # Point to the QML files in the "qml" folder
+        qml/GalleryMenuButton.ui.qml
         qml/Robo_view.qml
         qml/RobotStatusDelegate.qml
         qml/FontManager.qml
-        SOURCES robot.h
-        SOURCES RobotManager.h
-        SOURCES
-        SOURCES
-        SOURCES proto_listener.h proto_listener.cpp
+    SOURCES
+        robot.h
+        RobotManager.h
+        proto_listener.h
+        proto_listener.cpp
 )
+
+# Specify Protobuf source files
+set(PROTO_SRCS
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_eletro_UI.pb.cc
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_wrapper.pb.cc
+)
+
+# Specify Protobuf header files
+set(PROTO_HDRS
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_eletro_UI.pb.h
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_wrapper.pb.h
+)
+
+# Add Protobuf generated files to the target
+target_sources(appRedRefC PRIVATE ${PROTO_SRCS} ${PROTO_HDRS})
 
 # Add resources (e.g., images) via the .qrc file
 qt_add_resources(appRedRefC "resources"

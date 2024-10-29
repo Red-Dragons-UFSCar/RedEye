@@ -5,7 +5,7 @@
 #include "robot.h"
 #include "RobotManager.h"
 #include <QTimer>
-
+#include "proto_listener.h"
 // Assuming you have a `RobotManager` pointer named `robotManager`
 void incrementRobotSpeed(RobotManager *robotManager) {
     QTimer *timer = new QTimer();
@@ -29,23 +29,40 @@ void incrementRobotSpeed(RobotManager *robotManager) {
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    //Sets up the application icon
     QIcon icon(QPixmap("src/img/logo-vermelha2"));
     app.setWindowIcon(icon);
+
+    //Initializes the QML app engine for loading the UI
     QQmlApplicationEngine engine;
 
+    //Makes it so the robot class can be seen by the qml files
     qmlRegisterType<Robot>("com.example.robot", 1, 0, "Robot");
 
-    RobotManager robotManager;
-    engine.rootContext()->setContextProperty("robotManager", &robotManager);
-    robotManager.getRobot(0);
+    //creating robot manager and making it visible by qml
+    RobotManager* robotManager = new RobotManager();
+    engine.rootContext()->setContextProperty("robotManager", robotManager);
+
+    //just for testing
+    robotManager->getRobot(0);
+
+    //qml error checking
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    incrementRobotSpeed(&robotManager);
+
+    //incrementRobotSpeed(&robotManager);
+
+    //protocol listener
+    ProtoListener* protoListener = new ProtoListener(robotManager);
+    protoListener->startListeningVision(10002);
+
+    //initialize the UI
     engine.loadFromModule("RedRefC", "Main");
 
-    return app.exec();
+    return app.exec(); //QT event loop
 }
