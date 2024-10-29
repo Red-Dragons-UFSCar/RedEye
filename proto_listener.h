@@ -7,34 +7,34 @@
 #include <QUdpSocket>
 #include "RobotManager.h"
 
-class Proto_Listener : public
+class ProtoListener : public
                        QObject {
     Q_OBJECT
 
 public:
-    Proto_Listener(RobotManager* manager, QObject* parent = nullptr);
-    ~Proto_Listener();
+    ProtoListener(RobotManager* manager, QObject* parent = nullptr);
+    ~ProtoListener();
 
 
 
-    void startListeningEletro(int portEletro);
-    void startListeningVisao(int portVisao);
+    void startListeningElectro(int portElectro);
+    void startListeningVision(int portVisao);
 
 signals:
     void visionDataRecieved();
     void electronicDataRecieved();
 
 private slots:
-    void onVisionDataRecieved();
-    void onElectronicDataRecieved();
+    void onVisionDataReceived();
+    void onElectronicDataReceived();
 
 private:
-    RobotManager* manager;
-    QUdpSocket* socket_vision;
-    QUdpSocket* socket_eletronic;
+    RobotManager* m_manager;
+    QUdpSocket* m_socket_vision;
+    QUdpSocket* m_socket_electronic;
 
-    void process_vision_message(QByteArray data);
-    void process_electronic_message(QByteArray data);
+    void processVisionMessage(QByteArray data);
+    void processElectronicMessage(QByteArray data);
 
 
 

@@ -3,11 +3,12 @@ cmake_minimum_required(VERSION 3.16)
 project(RedRefC VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
-
+find_package(Protobuf REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
+
+include_directories(${Protobuf_INCLUDE_DIRS})
 # Add executable
 qt_add_executable(appRedRefC
     main.cpp
