@@ -42,7 +42,7 @@ ApplicationWindow {
 
             GalleryMenuButton {
                 id: botao_robos
-                height: 70
+                implicitHeight: 70
                 highlighted: false
                 flat: false
                 autoExclusive: true
@@ -52,7 +52,7 @@ ApplicationWindow {
 
                 Connections {
                     target: botao_robos
-                    onClicked: {
+                    function onClicked() {
                         galleryPanel.currentIndex = 0
                         menuPanel.currentIndex = 0
                     }
@@ -61,14 +61,14 @@ ApplicationWindow {
 
             GalleryMenuButton {
                 id: botao_codigo
-                height: 70
+                implicitHeight: 70
                 autoExclusive: true
                 buttonLabelText: "Código"
                 Layout.fillWidth: true
 
                 Connections {
                     target: botao_codigo
-                    onClicked: {
+                    function onClicked() {
                         galleryPanel.currentIndex = 1
                         menuPanel.currentIndex = 1
                     }
@@ -77,14 +77,14 @@ ApplicationWindow {
 
             GalleryMenuButton {
                 id: botao_sobre
-                height: 70
+                implicitHeight: 70
                 autoExclusive: true
                 buttonLabelText: "Sobre"
                 Layout.fillWidth: true
 
                 Connections {
                     target: botao_sobre
-                    onClicked: {
+                    function onClicked(){
                         galleryPanel.currentIndex = 2
                         menuPanel.currentIndex = 2
                     }
@@ -119,7 +119,7 @@ ApplicationWindow {
 
                 GalleryMenuButton {
                     id: submenu_robos_1
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     checked: true
                     Layout.fillWidth: true
@@ -127,46 +127,46 @@ ApplicationWindow {
 
                     Connections {
                         target: submenu_robos_1
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
 
                 GalleryMenuButton {
                     id: submenu_robos_2
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     Layout.fillWidth: true
                     buttonLabelText: "Botao"
 
                     Connections {
                         target: submenu_robos_2
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
 
                 GalleryMenuButton {
                     id: submenu_robos_4
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     Layout.fillWidth: true
                     buttonLabelText: "Botao"
 
                     Connections {
                         target: submenu_robos_4
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
 
                 GalleryMenuButton {
                     id: submenu_robos_3
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     Layout.fillWidth: true
                     buttonLabelText: "Botao"
 
                     Connections {
                         target: submenu_robos_3
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
             }
@@ -178,7 +178,7 @@ ApplicationWindow {
 
                 GalleryMenuButton {
                     id: codigo_submenu_1
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     checked: true
                     Layout.fillWidth: true
@@ -186,29 +186,29 @@ ApplicationWindow {
 
                     Connections {
                         target: codigo_submenu_1
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
 
                 GalleryMenuButton {
                     id: codigo_submenu_2
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     Layout.fillWidth: true
                     buttonLabelText: "Botao"
 
                     Connections {
                         target: codigo_submenu_2
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
 
                 GalleryMenuButton {
                     id: codigo_submenu_3
-                    height: 70
+                    implicitHeight: 70
                     Connections {
                         target: codigo_submenu_3
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                     buttonLabelText: "Botao"
                     autoExclusive: true
@@ -222,7 +222,7 @@ ApplicationWindow {
 
                 GalleryMenuButton {
                     id: sobre_submenu_1
-                    height: 70
+                    implicitHeight: 70
                     autoExclusive: true
                     checked: true
                     buttonLabelText: "Botao"
@@ -230,7 +230,7 @@ ApplicationWindow {
 
                     Connections {
                         target: sobre_submenu_1
-                        onClicked: galleryPanel.currentIndex = 0
+                        function onClicked() {galleryPanel.currentIndex = 0}
                     }
                 }
             }
@@ -261,8 +261,8 @@ ApplicationWindow {
                 id: vis_cod
                 color: "black"
                 text: "Red Referee, o brabo. \n Por: Lealdini"
-                x: 734
-                y: 250
+                Layout.leftMargin: 734
+                Layout.topMargin: 250
                 font.pixelSize: 50
             }
         }
