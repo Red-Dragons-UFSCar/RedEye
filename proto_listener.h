@@ -4,6 +4,7 @@
 #include <QObject>
 #include "./communication/protobuf/ssl_vision_wrapper.pb.h"
 #include "./communication/protobuf/ssl_eletro_UI.pb.h"
+#include "./communication/protobuf/ssl_vision_detection.pb.h"
 #include <QUdpSocket>
 #include "RobotManager.h"
 

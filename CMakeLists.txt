@@ -5,6 +5,7 @@ project(RedRefC VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
 find_package(Protobuf REQUIRED)
+include_directories(${Protobuf_INCLUDE_DIRS})
 qt_standard_project_setup(REQUIRES 6.5)
 
 
@@ -32,20 +33,27 @@ qt_add_qml_module(appRedRefC
         proto_listener.cpp
 )
 
+
+
 # Specify Protobuf source files
 set(PROTO_SRCS
     ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_eletro_UI.pb.cc
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_detection.pb.cc
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_geometry.pb.cc
     ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_wrapper.pb.cc
 )
 
 # Specify Protobuf header files
 set(PROTO_HDRS
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_detection.pb.h
+    ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_geometry.pb.h
     ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_eletro_UI.pb.h
     ${CMAKE_SOURCE_DIR}/communication/protobuf/ssl_vision_wrapper.pb.h
 )
 
 # Add Protobuf generated files to the target
 target_sources(appRedRefC PRIVATE ${PROTO_SRCS} ${PROTO_HDRS})
+
 
 # Add resources (e.g., images) via the .qrc file
 qt_add_resources(appRedRefC "resources"
@@ -65,6 +73,7 @@ set_target_properties(appRedRefC PROPERTIES
 # Link to Qt libraries
 target_link_libraries(appRedRefC
     PRIVATE Qt6::Quick
+    ${Protobuf_LIBRARIES}
 )
 
 # Install target

@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
     //protocol listener
     ProtoListener* protoListener = new ProtoListener(robotManager);
-    protoListener->startListeningVision(10002);
+    protoListener->startListeningVision(10020);
 
     //initialize the UI
     engine.loadFromModule("RedRefC", "Main");

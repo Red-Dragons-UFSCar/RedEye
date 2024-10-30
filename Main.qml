@@ -26,8 +26,8 @@ ApplicationWindow {
             anchors.top: parent.top
             anchors.rightMargin: 40
             anchors.topMargin: 50
-            font.family: FontManager.victorMonoFamily
-            font.styleName: FontManager.boldFontStyle
+            //font.family: FontManager.victorMonoFamily
+            //font.styleName: FontManager.boldFontStyle
             font.pixelSize: 48
         }
 

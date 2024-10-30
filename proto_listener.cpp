@@ -40,6 +40,7 @@ void ProtoListener::onElectronicDataReceived(){
 
 void ProtoListener::onVisionDataReceived(){
     QByteArray data = m_socket_vision->readAll();
+    qDebug() << "vison data recieved";
     processVisionMessage(data);
 }
 
