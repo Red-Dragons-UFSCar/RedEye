@@ -21,7 +21,7 @@ ApplicationWindow {
             id: galleryLabel
             x: 734
             y: 20
-            text: qsTr("RED REFEREE 0.1")
+            text: qsTr("RED EYE 0.2")
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.rightMargin: 40
@@ -260,7 +260,7 @@ ApplicationWindow {
             Text {
                 id: vis_cod
                 color: "black"
-                text: "Red Referee, o brabo. \n Por: Lealdini"
+                text: "Red Eye, uma interface para isléu. \n Por: Lealdini"
                 Layout.leftMargin: 734
                 Layout.topMargin: 250
                 font.pixelSize: 50
