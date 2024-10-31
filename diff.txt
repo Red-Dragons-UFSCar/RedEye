@@ -1,0 +1,102 @@
+diff --git a/Main.qml b/Main.qml
+index 0cbb0a6..5187079 100644
+--- a/Main.qml
++++ b/Main.qml
+@@ -255,7 +255,7 @@ ApplicationWindow {
+ 
+ 
+             Robo_view {
+-                id: vis_sobre
++                id: map_view
+             }
+ 
+             Text {
+diff --git a/main.cpp b/main.cpp
+index 14449c3..808b0d9 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -6,25 +6,6 @@
+ #include "RobotManager.h"
+ #include <QTimer>
+ #include "proto_listener.h"
+-// Assuming you have a `RobotManager` pointer named `robotManager`
+-void incrementRobotSpeed(RobotManager *robotManager) {
+-    QTimer *timer = new QTimer();
+-
+-    QObject::connect(timer, &QTimer::timeout, [robotManager]() {
+-        Robot *firstRobot = robotManager->getRobot(0);  // Get the first robot
+-
+-        if (firstRobot) {
+-            qDebug() << "increasing speed";
+-            firstRobot->setSpeed(firstRobot->speed() + 1);  // Increment speed by 1
+-            firstRobot->setX(firstRobot->x() + 1);
+-            firstRobot->connectionStatus() ? firstRobot->setConnectionStatus(false) : firstRobot->setConnectionStatus(true);
+-
+-        }
+-    });
+-
+-    timer->start(3000);  // 3000 ms = 3 seconds
+-}
+-
+ 
+ int main(int argc, char *argv[])
+ {
+@@ -52,14 +33,14 @@ int main(int argc, char *argv[])
+         []() { QCoreApplication::exit(-1); },
+         Qt::QueuedConnection);
+ 
+-    //incrementRobotSpeed(robotManager);
+-
+     //protocol listener
+     ProtoListener* protoListener = new ProtoListener(robotManager, &app);
+     protoListener->startListeningVision(10020);
+ 
+     //initialize the UI
+     engine.loadFromModule("RedRefC", "Main");
++
++    //qml load check
+     if (engine.rootObjects().isEmpty()) {
+         qCritical("Failed to load QML file.");
+         return -1;  // Exit if QML load fails
+diff --git a/proto_listener.cpp b/proto_listener.cpp
+index e5ab561..79dedf2 100644
+--- a/proto_listener.cpp
++++ b/proto_listener.cpp
+@@ -40,7 +40,7 @@ void ProtoListener::onElectronicDataReceived(){
+ 
+ void ProtoListener::onVisionDataReceived(){
+     if (m_socket_vision->hasPendingDatagrams()){
+-        qDebug("reading data");
++        //qDebug("reading data");
+         QByteArray data;
+         data.resize(m_socket_vision->pendingDatagramSize());
+         m_socket_vision->readDatagram(data.data(), data.size());
+@@ -62,13 +62,13 @@ void ProtoListener::processElectronicMessage(const QByteArray& data) {
+ 
+ void ProtoListener::processVisionMessage(const QByteArray& data) {
+     SSL_WrapperPacket visionMessage;
+-    qDebug("Trying to process vision data...");
++    //qDebug("Trying to process vision data...");
+     //qDebug() << "incoming data size: " << data.size();
+     //qDebug() << "Data content: " << data.toHex();
+ 
+     if (visionMessage.ParseFromArray(data.data(), data.size())) {
+         // Process robots
+-        qDebug("Processing...");
++        //qDebug("Processing...");
+         for (const auto& robot : visionMessage.detection().robots_blue()) {
+             int robotId = robot.robot_id();
+             double x = robot.x();
+diff --git a/qml/RobotStatusDelegate.qml b/qml/RobotStatusDelegate.qml
+index 8ec776a..142be90 100644
+--- a/qml/RobotStatusDelegate.qml
++++ b/qml/RobotStatusDelegate.qml
+@@ -28,7 +28,7 @@ Item {
+ 
+             // Robot Coordinates
+             Text {
+-                text: "X: " + model.x + " Y: " + modelData.y
++                text: "X: " + model.x.toFixed(1) + " Y: " + modelData.y.toFixed(1)
+                 font.pointSize: 14
+             }
+ 

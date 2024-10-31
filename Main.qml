@@ -255,7 +255,7 @@ ApplicationWindow {
 
 
             Robo_view {
-                id: vis_sobre
+                id: map_view
             }
 
             Text {

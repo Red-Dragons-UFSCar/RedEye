@@ -28,7 +28,7 @@ Item {
 
             // Robot Coordinates
             Text {
-                text: "X: " + model.x + " Y: " + modelData.y
+                text: "X: " + model.x.toFixed(1) + " Y: " + modelData.y.toFixed(1)
                 font.pointSize: 14
             }
 
