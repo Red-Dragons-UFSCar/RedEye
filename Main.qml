@@ -254,7 +254,7 @@ ApplicationWindow {
             }
 
 
-            Robo_view {
+            FieldMap {
                 id: map_view
             }
 

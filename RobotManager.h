@@ -31,7 +31,7 @@ public:
         return QQmlListProperty<Robot>(this, &m_robots, &RobotManager::robotCount, &RobotManager::robotAt);
     }
 
-    Robot* getRobot(int index) {
+    Q_INVOKABLE Robot* getRobot(int index) {
         if (index >= 0 && index < m_robots.size()) {
             return m_robots[index];
         }

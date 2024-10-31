@@ -26,11 +26,15 @@ qt_add_qml_module(appRedRefC
         qml/Robo_view.qml
         qml/RobotStatusDelegate.qml
         qml/FontManager.qml
+        qml/FieldMap.qml
+        utils/utils.js
     SOURCES
         robot.h
         RobotManager.h
         proto_listener.h
         proto_listener.cpp
+
+
 )
 
 
