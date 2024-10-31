@@ -1,26 +1,16 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import com.example.robot 1.0
+
 Item {
+    id: robotStatusDelegate
     width: parent.width
     height: 50
-
-    // Declare custom properties
-    property int robotId
-    property real robotX
-    property real robotY
-    property real robotSpeed
-    property bool isConnected
-    property real current
-    property int latency
-    property real transmission
-
 
     Rectangle {
         width: parent.width + 800
         height: parent.height
         border.color: "lightgrey"
-        color: "lightblue"
+        color: model.color  // Access color directly from model
         radius: 10
 
         Row {
@@ -31,43 +21,42 @@ Item {
 
             // Robot ID
             Text {
-                text: "Robot ID: " + robotManager.robots[index].robotId
+                text: "Robot ID: " + model.robotId
                 font.bold: true
                 font.pointSize: 16
             }
 
             // Robot Coordinates
             Text {
-                text: "X: " + robotManager.robots[index].x + " Y: " + robotManager.robots[index].y
+                text: "X: " + model.x + " Y: " + modelData.y
                 font.pointSize: 14
             }
 
             // Robot Speed
             Text {
-                text: "Speed: " + robotManager.robots[index].speed
+                text: "Speed: " + model.speed
                 font.pointSize: 14
             }
 
             // Connection Status
             Text {
-                text: robotManager.robots[index].connectionStatus ? "Connected" : "Disconnected"
+                text: modelData.isConnected ? "Connected" : "Disconnected"
                 font.pointSize: 14
-                color: robotManager.robots[index].connectionStatus ? "green" : "red"
+                color: modelData.isConnected ? "green" : "red"
             }
 
             Text {
-                text: "Corrente: " + robotManager.robots[index].current
-                font.pointSize: 14
-
-            }
-
-            Text{
-                text: "Latencia: " + robotManager.robots[index].latency
+                text: "Current: " + model.current
                 font.pointSize: 14
             }
 
-            Text{
-                text: "Qualidade: " + robotManager.robots[index].signalQuality
+            Text {
+                text: "Latency: " + model.latency
+                font.pointSize: 14
+            }
+
+            Text {
+                text: "Signal Quality: " + model.transmission
                 font.pointSize: 14
             }
         }

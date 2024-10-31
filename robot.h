@@ -2,6 +2,7 @@
 #define ROBOT_H
 
 #include <QObject>
+#include <QColor>
 
 class Robot : public QObject{
     Q_OBJECT
@@ -14,10 +15,11 @@ class Robot : public QObject{
     Q_PROPERTY(bool connectionStatus READ connectionStatus WRITE setConnectionStatus NOTIFY connectionStatusChanged)
     Q_PROPERTY(double current READ current WRITE setCurrent NOTIFY currentChanged)
     Q_PROPERTY(int signalQuality READ signalQuality WRITE setSignalQuality NOTIFY signalQualityChanged)
+    Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
-    explicit Robot(QObject *parent = nullptr, QString Ident = 0) : QObject(parent),
-        m_robotId(Ident), m_x(0), m_y(0), m_speed(0), m_connectionStatus(false), m_current(0.0), m_signalQuality(0) {}
+    explicit Robot(QObject *parent = nullptr, QString Ident = "undef") : QObject(parent),
+        m_robotId(Ident), m_x(0.0), m_y(0.0), m_speed(0.0), m_connectionStatus(false), m_current(0.0), m_signalQuality(0), m_color("darkblue") {}
 
     // Getters
     QString robotId() const { return m_robotId; }
@@ -27,6 +29,7 @@ public:
     bool connectionStatus() const { return m_connectionStatus; }
     double current() const { return m_current; }
     int signalQuality() const { return m_signalQuality; }
+    QColor color() const { return m_color; }
 
     // Setters
     void setRobotId(const QString &robotId) {
@@ -72,6 +75,13 @@ public:
         }
     }
 
+    void setColor(const QColor &color) {
+        if (color != m_color) {
+            m_color = color;
+            emit colorChanged();
+        }
+    }
+
 signals:
     void robotIdChanged();
     void xChanged();
@@ -80,6 +90,7 @@ signals:
     void connectionStatusChanged();
     void currentChanged();
     void signalQualityChanged();
+    void colorChanged();
 
 private:
     QString m_robotId;
@@ -89,6 +100,8 @@ private:
     bool m_connectionStatus;
     double m_current;
     int m_signalQuality;
+    QColor m_color;
+
 };
 
 #endif // ROBOT_H

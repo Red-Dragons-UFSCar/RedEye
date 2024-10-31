@@ -41,11 +41,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<Robot>("com.example.robot", 1, 0, "Robot");
 
     //creating robot manager and making it visible by qml
-    RobotManager* robotManager = new RobotManager();
+    RobotManager* robotManager = new RobotManager(&app);
     engine.rootContext()->setContextProperty("robotManager", robotManager);
-
-    //just for testing
-    robotManager->getRobot(0);
 
     //qml error checking
     QObject::connect(
@@ -55,14 +52,17 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    //incrementRobotSpeed(&robotManager);
+    //incrementRobotSpeed(robotManager);
 
     //protocol listener
-    ProtoListener* protoListener = new ProtoListener(robotManager);
+    ProtoListener* protoListener = new ProtoListener(robotManager, &app);
     protoListener->startListeningVision(10020);
 
     //initialize the UI
     engine.loadFromModule("RedRefC", "Main");
-
+    if (engine.rootObjects().isEmpty()) {
+        qCritical("Failed to load QML file.");
+        return -1;  // Exit if QML load fails
+    }
     return app.exec(); //QT event loop
 }

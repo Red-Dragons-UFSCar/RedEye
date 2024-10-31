@@ -13,8 +13,17 @@ class RobotManager : public QObject {
 
 public:
     explicit RobotManager(QObject *parent = nullptr) : QObject(parent) {
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < 7; ++i) {
             m_robots.append(new Robot(this, QString::number(i)));  // Create Robot instances and add them to the list
+            if (i < 3){
+                m_robots[i]->setColor("lightblue");
+            }
+            else if (i >= 3 && i != 6){
+                m_robots[i]->setColor("yellow");
+            }
+            else {
+                m_robots[i]->setColor("Orange");
+            }
         }
     }
 
@@ -29,10 +38,19 @@ public:
         return nullptr;
     }
 
-    void updateRobotPosition(int robotId, double x, double y){
-        std::cout << "----------------------------------" << "\n";
-        std::cout << "ID: " << robotId << "X: " << x << "Y: " << y << "\n";
-        std::cout << "----------------------------------" << "\n";
+    void updateRobotPositionBlue(int robotId, double x, double y){
+        m_robots[robotId]->setX(x);
+        m_robots[robotId]->setY(y);
+    }
+
+    void updateRobotPositionYellow(int robotId, double x, double y){
+        m_robots[robotId+3]->setX(x);
+        m_robots[robotId+3]->setY(y);
+    }
+
+    void updateRobotPositionBall(int robotId, double x, double y){
+        m_robots[6]->setX(x);
+        m_robots[6]->setY(y);
     }
 
 private:

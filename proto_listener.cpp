@@ -73,21 +73,21 @@ void ProtoListener::processVisionMessage(const QByteArray& data) {
             int robotId = robot.robot_id();
             double x = robot.x();
             double y = robot.y();
-            m_manager->updateRobotPosition(robotId, x, y);  // Custom method in RobotManager
+            m_manager->updateRobotPositionBlue(robotId, x, y);  // Custom method in RobotManager
         }
 
         for (const auto& robot : visionMessage.detection().robots_yellow()) {
             int robotId = robot.robot_id();
             double x = robot.x();
             double y = robot.y();
-            m_manager->updateRobotPosition(robotId, x, y);
+            m_manager->updateRobotPositionYellow(robotId, x, y);
         }
 
         // Process the ball as a "robot" with ID 0
         if (!visionMessage.detection().balls().empty()) {
             double x = visionMessage.detection().balls(0).x();
             double y = visionMessage.detection().balls(0).y();
-            m_manager->updateRobotPosition(0, x, y);  // Using ID 0 for the ball
+            m_manager->updateRobotPositionBall(69, x, y);  // Using ID 0 for the ball
         }
     } else {
         qWarning() << "Couldn't parse vision message";
