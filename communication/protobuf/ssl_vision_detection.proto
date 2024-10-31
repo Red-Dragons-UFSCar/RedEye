@@ -1,6 +1,5 @@
 syntax = "proto2";
-
-option go_package = "github.com/RoboCup-SSL/ssl-vision-client/pkg/vision";
+option go_package = "github.com/RoboCup-SSL/ssl-simulation-protocol/pkg/sim";
 
 message SSL_DetectionBall {
   required float  confidence = 1;

@@ -6,6 +6,8 @@
 #include "./communication/protobuf/ssl_eletro_UI.pb.h"
 #include "./communication/protobuf/ssl_vision_detection.pb.h"
 #include <QUdpSocket>
+#include <iostream>
+#include <QMutex>
 #include "RobotManager.h"
 
 class ProtoListener : public
@@ -31,6 +33,7 @@ private slots:
 
 private:
     RobotManager* m_manager;
+    QMutex mutex;
     QUdpSocket* m_socket_vision;
     QUdpSocket* m_socket_electronic;
 

@@ -85,13 +85,7 @@ PROTOBUF_CONSTEXPR SSL_GeometryFieldSize::SSL_GeometryFieldSize(
   , /*decltype(_impl_.goal_depth_)*/0
   , /*decltype(_impl_.boundary_width_)*/0
   , /*decltype(_impl_.penalty_area_depth_)*/0
-  , /*decltype(_impl_.penalty_area_width_)*/0
-  , /*decltype(_impl_.center_circle_radius_)*/0
-  , /*decltype(_impl_.line_thickness_)*/0
-  , /*decltype(_impl_.goal_center_to_penalty_mark_)*/0
-  , /*decltype(_impl_.goal_height_)*/0
-  , /*decltype(_impl_.ball_radius_)*/0
-  , /*decltype(_impl_.max_robot_radius_)*/0} {}
+  , /*decltype(_impl_.penalty_area_width_)*/0} {}
 struct SSL_GeometryFieldSizeDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SSL_GeometryFieldSizeDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -260,12 +254,6 @@ const uint32_t TableStruct_ssl_5fvision_5fgeometry_2eproto::offsets[] PROTOBUF_S
   PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.field_arcs_),
   PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.penalty_area_depth_),
   PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.penalty_area_width_),
-  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.center_circle_radius_),
-  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.line_thickness_),
-  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.goal_center_to_penalty_mark_),
-  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.goal_height_),
-  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.ball_radius_),
-  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _impl_.max_robot_radius_),
   0,
   1,
   2,
@@ -275,12 +263,6 @@ const uint32_t TableStruct_ssl_5fvision_5fgeometry_2eproto::offsets[] PROTOBUF_S
   ~0u,
   5,
   6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
   PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -372,12 +354,12 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 0, 8, -1, sizeof(::Vector2f)},
   { 10, 21, -1, sizeof(::SSL_FieldLineSegment)},
   { 26, 39, -1, sizeof(::SSL_FieldCircularArc)},
-  { 46, 67, -1, sizeof(::SSL_GeometryFieldSize)},
-  { 82, 105, -1, sizeof(::SSL_GeometryCameraCalibration)},
-  { 122, 131, -1, sizeof(::SSL_BallModelStraightTwoPhase)},
-  { 134, 143, -1, sizeof(::SSL_BallModelChipFixedLoss)},
-  { 146, 154, -1, sizeof(::SSL_GeometryModels)},
-  { 156, 165, -1, sizeof(::SSL_GeometryData)},
+  { 46, 61, -1, sizeof(::SSL_GeometryFieldSize)},
+  { 70, 93, -1, sizeof(::SSL_GeometryCameraCalibration)},
+  { 110, 119, -1, sizeof(::SSL_BallModelStraightTwoPhase)},
+  { 122, 131, -1, sizeof(::SSL_BallModelChipFixedLoss)},
+  { 134, 142, -1, sizeof(::SSL_GeometryModels)},
+  { 144, 153, -1, sizeof(::SSL_GeometryData)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -402,53 +384,49 @@ const char descriptor_table_protodef_ssl_5fvision_5fgeometry_2eproto[] PROTOBUF_
   "\031\n\006center\030\002 \002(\0132\t.Vector2f\022\016\n\006radius\030\003 \002"
   "(\002\022\n\n\002a1\030\004 \002(\002\022\n\n\002a2\030\005 \002(\002\022\021\n\tthickness\030"
   "\006 \002(\002\022!\n\004type\030\007 \001(\0162\023.SSL_FieldShapeType"
-  "\"\260\003\n\025SSL_GeometryFieldSize\022\024\n\014field_leng"
+  "\"\221\002\n\025SSL_GeometryFieldSize\022\024\n\014field_leng"
   "th\030\001 \002(\005\022\023\n\013field_width\030\002 \002(\005\022\022\n\ngoal_wi"
   "dth\030\003 \002(\005\022\022\n\ngoal_depth\030\004 \002(\005\022\026\n\016boundar"
   "y_width\030\005 \002(\005\022*\n\013field_lines\030\006 \003(\0132\025.SSL"
   "_FieldLineSegment\022)\n\nfield_arcs\030\007 \003(\0132\025."
   "SSL_FieldCircularArc\022\032\n\022penalty_area_dep"
-  "th\030\010 \001(\005\022\032\n\022penalty_area_width\030\t \001(\005\022\034\n\024"
-  "center_circle_radius\030\n \001(\005\022\026\n\016line_thick"
-  "ness\030\013 \001(\005\022#\n\033goal_center_to_penalty_mar"
-  "k\030\014 \001(\005\022\023\n\013goal_height\030\r \001(\005\022\023\n\013ball_rad"
-  "ius\030\016 \001(\002\022\030\n\020max_robot_radius\030\017 \001(\002\"\200\003\n\035"
-  "SSL_GeometryCameraCalibration\022\021\n\tcamera_"
-  "id\030\001 \002(\r\022\024\n\014focal_length\030\002 \002(\002\022\031\n\021princi"
-  "pal_point_x\030\003 \002(\002\022\031\n\021principal_point_y\030\004"
-  " \002(\002\022\022\n\ndistortion\030\005 \002(\002\022\n\n\002q0\030\006 \002(\002\022\n\n\002"
-  "q1\030\007 \002(\002\022\n\n\002q2\030\010 \002(\002\022\n\n\002q3\030\t \002(\002\022\n\n\002tx\030\n"
-  " \002(\002\022\n\n\002ty\030\013 \002(\002\022\n\n\002tz\030\014 \002(\002\022\037\n\027derived_"
-  "camera_world_tx\030\r \001(\002\022\037\n\027derived_camera_"
-  "world_ty\030\016 \001(\002\022\037\n\027derived_camera_world_t"
-  "z\030\017 \001(\002\022\031\n\021pixel_image_width\030\020 \001(\r\022\032\n\022pi"
-  "xel_image_height\030\021 \001(\r\"V\n\035SSL_BallModelS"
-  "traightTwoPhase\022\021\n\tacc_slide\030\001 \002(\001\022\020\n\010ac"
-  "c_roll\030\002 \002(\001\022\020\n\010k_switch\030\003 \002(\001\"l\n\032SSL_Ba"
-  "llModelChipFixedLoss\022\034\n\024damping_xy_first"
-  "_hop\030\001 \002(\001\022\035\n\025damping_xy_other_hops\030\002 \002("
-  "\001\022\021\n\tdamping_z\030\003 \002(\001\"\206\001\n\022SSL_GeometryMod"
-  "els\022:\n\022straight_two_phase\030\001 \001(\0132\036.SSL_Ba"
-  "llModelStraightTwoPhase\0224\n\017chip_fixed_lo"
-  "ss\030\002 \001(\0132\033.SSL_BallModelChipFixedLoss\"\215\001"
-  "\n\020SSL_GeometryData\022%\n\005field\030\001 \002(\0132\026.SSL_"
-  "GeometryFieldSize\022-\n\005calib\030\002 \003(\0132\036.SSL_G"
-  "eometryCameraCalibration\022#\n\006models\030\003 \001(\013"
-  "2\023.SSL_GeometryModels*\333\002\n\022SSL_FieldShape"
-  "Type\022\r\n\tUndefined\020\000\022\020\n\014CenterCircle\020\001\022\020\n"
-  "\014TopTouchLine\020\002\022\023\n\017BottomTouchLine\020\003\022\020\n\014"
-  "LeftGoalLine\020\004\022\021\n\rRightGoalLine\020\005\022\017\n\013Hal"
-  "fwayLine\020\006\022\016\n\nCenterLine\020\007\022\026\n\022LeftPenalt"
-  "yStretch\020\010\022\027\n\023RightPenaltyStretch\020\t\022\037\n\033L"
-  "eftFieldLeftPenaltyStretch\020\n\022 \n\034LeftFiel"
-  "dRightPenaltyStretch\020\013\022 \n\034RightFieldLeft"
-  "PenaltyStretch\020\014\022!\n\035RightFieldRightPenal"
-  "tyStretch\020\rB5Z3github.com/RoboCup-SSL/ss"
-  "l-vision-client/pkg/vision"
+  "th\030\010 \001(\005\022\032\n\022penalty_area_width\030\t \001(\005\"\200\003\n"
+  "\035SSL_GeometryCameraCalibration\022\021\n\tcamera"
+  "_id\030\001 \002(\r\022\024\n\014focal_length\030\002 \002(\002\022\031\n\021princ"
+  "ipal_point_x\030\003 \002(\002\022\031\n\021principal_point_y\030"
+  "\004 \002(\002\022\022\n\ndistortion\030\005 \002(\002\022\n\n\002q0\030\006 \002(\002\022\n\n"
+  "\002q1\030\007 \002(\002\022\n\n\002q2\030\010 \002(\002\022\n\n\002q3\030\t \002(\002\022\n\n\002tx\030"
+  "\n \002(\002\022\n\n\002ty\030\013 \002(\002\022\n\n\002tz\030\014 \002(\002\022\037\n\027derived"
+  "_camera_world_tx\030\r \001(\002\022\037\n\027derived_camera"
+  "_world_ty\030\016 \001(\002\022\037\n\027derived_camera_world_"
+  "tz\030\017 \001(\002\022\031\n\021pixel_image_width\030\020 \001(\r\022\032\n\022p"
+  "ixel_image_height\030\021 \001(\r\"V\n\035SSL_BallModel"
+  "StraightTwoPhase\022\021\n\tacc_slide\030\001 \002(\001\022\020\n\010a"
+  "cc_roll\030\002 \002(\001\022\020\n\010k_switch\030\003 \002(\001\"l\n\032SSL_B"
+  "allModelChipFixedLoss\022\034\n\024damping_xy_firs"
+  "t_hop\030\001 \002(\001\022\035\n\025damping_xy_other_hops\030\002 \002"
+  "(\001\022\021\n\tdamping_z\030\003 \002(\001\"\206\001\n\022SSL_GeometryMo"
+  "dels\022:\n\022straight_two_phase\030\001 \001(\0132\036.SSL_B"
+  "allModelStraightTwoPhase\0224\n\017chip_fixed_l"
+  "oss\030\002 \001(\0132\033.SSL_BallModelChipFixedLoss\"\215"
+  "\001\n\020SSL_GeometryData\022%\n\005field\030\001 \002(\0132\026.SSL"
+  "_GeometryFieldSize\022-\n\005calib\030\002 \003(\0132\036.SSL_"
+  "GeometryCameraCalibration\022#\n\006models\030\003 \001("
+  "\0132\023.SSL_GeometryModels*\333\002\n\022SSL_FieldShap"
+  "eType\022\r\n\tUndefined\020\000\022\020\n\014CenterCircle\020\001\022\020"
+  "\n\014TopTouchLine\020\002\022\023\n\017BottomTouchLine\020\003\022\020\n"
+  "\014LeftGoalLine\020\004\022\021\n\rRightGoalLine\020\005\022\017\n\013Ha"
+  "lfwayLine\020\006\022\016\n\nCenterLine\020\007\022\026\n\022LeftPenal"
+  "tyStretch\020\010\022\027\n\023RightPenaltyStretch\020\t\022\037\n\033"
+  "LeftFieldLeftPenaltyStretch\020\n\022 \n\034LeftFie"
+  "ldRightPenaltyStretch\020\013\022 \n\034RightFieldLef"
+  "tPenaltyStretch\020\014\022!\n\035RightFieldRightPena"
+  "ltyStretch\020\rB8Z6github.com/RoboCup-SSL/s"
+  "sl-simulation-protocol/pkg/sim"
   ;
 static ::_pbi::once_flag descriptor_table_ssl_5fvision_5fgeometry_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ssl_5fvision_5fgeometry_2eproto = {
-    false, false, 2066, descriptor_table_protodef_ssl_5fvision_5fgeometry_2eproto,
+    false, false, 1910, descriptor_table_protodef_ssl_5fvision_5fgeometry_2eproto,
     "ssl_vision_geometry.proto",
     &descriptor_table_ssl_5fvision_5fgeometry_2eproto_once, nullptr, 0, 9,
     schemas, file_default_instances, TableStruct_ssl_5fvision_5fgeometry_2eproto::offsets,
@@ -1665,24 +1643,6 @@ class SSL_GeometryFieldSize::_Internal {
   static void set_has_penalty_area_width(HasBits* has_bits) {
     (*has_bits)[0] |= 64u;
   }
-  static void set_has_center_circle_radius(HasBits* has_bits) {
-    (*has_bits)[0] |= 128u;
-  }
-  static void set_has_line_thickness(HasBits* has_bits) {
-    (*has_bits)[0] |= 256u;
-  }
-  static void set_has_goal_center_to_penalty_mark(HasBits* has_bits) {
-    (*has_bits)[0] |= 512u;
-  }
-  static void set_has_goal_height(HasBits* has_bits) {
-    (*has_bits)[0] |= 1024u;
-  }
-  static void set_has_ball_radius(HasBits* has_bits) {
-    (*has_bits)[0] |= 2048u;
-  }
-  static void set_has_max_robot_radius(HasBits* has_bits) {
-    (*has_bits)[0] |= 4096u;
-  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
     return ((has_bits[0] & 0x0000001f) ^ 0x0000001f) != 0;
   }
@@ -1708,18 +1668,12 @@ SSL_GeometryFieldSize::SSL_GeometryFieldSize(const SSL_GeometryFieldSize& from)
     , decltype(_impl_.goal_depth_){}
     , decltype(_impl_.boundary_width_){}
     , decltype(_impl_.penalty_area_depth_){}
-    , decltype(_impl_.penalty_area_width_){}
-    , decltype(_impl_.center_circle_radius_){}
-    , decltype(_impl_.line_thickness_){}
-    , decltype(_impl_.goal_center_to_penalty_mark_){}
-    , decltype(_impl_.goal_height_){}
-    , decltype(_impl_.ball_radius_){}
-    , decltype(_impl_.max_robot_radius_){}};
+    , decltype(_impl_.penalty_area_width_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&_impl_.field_length_, &from._impl_.field_length_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.max_robot_radius_) -
-    reinterpret_cast<char*>(&_impl_.field_length_)) + sizeof(_impl_.max_robot_radius_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.penalty_area_width_) -
+    reinterpret_cast<char*>(&_impl_.field_length_)) + sizeof(_impl_.penalty_area_width_));
   // @@protoc_insertion_point(copy_constructor:SSL_GeometryFieldSize)
 }
 
@@ -1739,12 +1693,6 @@ inline void SSL_GeometryFieldSize::SharedCtor(
     , decltype(_impl_.boundary_width_){0}
     , decltype(_impl_.penalty_area_depth_){0}
     , decltype(_impl_.penalty_area_width_){0}
-    , decltype(_impl_.center_circle_radius_){0}
-    , decltype(_impl_.line_thickness_){0}
-    , decltype(_impl_.goal_center_to_penalty_mark_){0}
-    , decltype(_impl_.goal_height_){0}
-    , decltype(_impl_.ball_radius_){0}
-    , decltype(_impl_.max_robot_radius_){0}
   };
 }
 
@@ -1776,15 +1724,10 @@ void SSL_GeometryFieldSize::Clear() {
   _impl_.field_lines_.Clear();
   _impl_.field_arcs_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x000000ffu) {
+  if (cached_has_bits & 0x0000007fu) {
     ::memset(&_impl_.field_length_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.center_circle_radius_) -
-        reinterpret_cast<char*>(&_impl_.field_length_)) + sizeof(_impl_.center_circle_radius_));
-  }
-  if (cached_has_bits & 0x00001f00u) {
-    ::memset(&_impl_.line_thickness_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.max_robot_radius_) -
-        reinterpret_cast<char*>(&_impl_.line_thickness_)) + sizeof(_impl_.max_robot_radius_));
+        reinterpret_cast<char*>(&_impl_.penalty_area_width_) -
+        reinterpret_cast<char*>(&_impl_.field_length_)) + sizeof(_impl_.penalty_area_width_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1886,60 +1829,6 @@ const char* SSL_GeometryFieldSize::_InternalParse(const char* ptr, ::_pbi::Parse
         } else
           goto handle_unusual;
         continue;
-      // optional int32 center_circle_radius = 10;
-      case 10:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
-          _Internal::set_has_center_circle_radius(&has_bits);
-          _impl_.center_circle_radius_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional int32 line_thickness = 11;
-      case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
-          _Internal::set_has_line_thickness(&has_bits);
-          _impl_.line_thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional int32 goal_center_to_penalty_mark = 12;
-      case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
-          _Internal::set_has_goal_center_to_penalty_mark(&has_bits);
-          _impl_.goal_center_to_penalty_mark_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional int32 goal_height = 13;
-      case 13:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 104)) {
-          _Internal::set_has_goal_height(&has_bits);
-          _impl_.goal_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional float ball_radius = 14;
-      case 14:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 117)) {
-          _Internal::set_has_ball_radius(&has_bits);
-          _impl_.ball_radius_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional float max_robot_radius = 15;
-      case 15:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 125)) {
-          _Internal::set_has_max_robot_radius(&has_bits);
-          _impl_.max_robot_radius_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else
-          goto handle_unusual;
-        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -2029,42 +1918,6 @@ uint8_t* SSL_GeometryFieldSize::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(9, this->_internal_penalty_area_width(), target);
   }
 
-  // optional int32 center_circle_radius = 10;
-  if (cached_has_bits & 0x00000080u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(10, this->_internal_center_circle_radius(), target);
-  }
-
-  // optional int32 line_thickness = 11;
-  if (cached_has_bits & 0x00000100u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(11, this->_internal_line_thickness(), target);
-  }
-
-  // optional int32 goal_center_to_penalty_mark = 12;
-  if (cached_has_bits & 0x00000200u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(12, this->_internal_goal_center_to_penalty_mark(), target);
-  }
-
-  // optional int32 goal_height = 13;
-  if (cached_has_bits & 0x00000400u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(13, this->_internal_goal_height(), target);
-  }
-
-  // optional float ball_radius = 14;
-  if (cached_has_bits & 0x00000800u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(14, this->_internal_ball_radius(), target);
-  }
-
-  // optional float max_robot_radius = 15;
-  if (cached_has_bits & 0x00001000u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(15, this->_internal_max_robot_radius(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2146,7 +1999,7 @@ size_t SSL_GeometryFieldSize::ByteSizeLong() const {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x000000e0u) {
+  if (cached_has_bits & 0x00000060u) {
     // optional int32 penalty_area_depth = 8;
     if (cached_has_bits & 0x00000020u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_penalty_area_depth());
@@ -2155,38 +2008,6 @@ size_t SSL_GeometryFieldSize::ByteSizeLong() const {
     // optional int32 penalty_area_width = 9;
     if (cached_has_bits & 0x00000040u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_penalty_area_width());
-    }
-
-    // optional int32 center_circle_radius = 10;
-    if (cached_has_bits & 0x00000080u) {
-      total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_center_circle_radius());
-    }
-
-  }
-  if (cached_has_bits & 0x00001f00u) {
-    // optional int32 line_thickness = 11;
-    if (cached_has_bits & 0x00000100u) {
-      total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_line_thickness());
-    }
-
-    // optional int32 goal_center_to_penalty_mark = 12;
-    if (cached_has_bits & 0x00000200u) {
-      total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_goal_center_to_penalty_mark());
-    }
-
-    // optional int32 goal_height = 13;
-    if (cached_has_bits & 0x00000400u) {
-      total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_goal_height());
-    }
-
-    // optional float ball_radius = 14;
-    if (cached_has_bits & 0x00000800u) {
-      total_size += 1 + 4;
-    }
-
-    // optional float max_robot_radius = 15;
-    if (cached_has_bits & 0x00001000u) {
-      total_size += 1 + 4;
     }
 
   }
@@ -2211,7 +2032,7 @@ void SSL_GeometryFieldSize::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
   _this->_impl_.field_lines_.MergeFrom(from._impl_.field_lines_);
   _this->_impl_.field_arcs_.MergeFrom(from._impl_.field_arcs_);
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x000000ffu) {
+  if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_impl_.field_length_ = from._impl_.field_length_;
     }
@@ -2232,27 +2053,6 @@ void SSL_GeometryFieldSize::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
     }
     if (cached_has_bits & 0x00000040u) {
       _this->_impl_.penalty_area_width_ = from._impl_.penalty_area_width_;
-    }
-    if (cached_has_bits & 0x00000080u) {
-      _this->_impl_.center_circle_radius_ = from._impl_.center_circle_radius_;
-    }
-    _this->_impl_._has_bits_[0] |= cached_has_bits;
-  }
-  if (cached_has_bits & 0x00001f00u) {
-    if (cached_has_bits & 0x00000100u) {
-      _this->_impl_.line_thickness_ = from._impl_.line_thickness_;
-    }
-    if (cached_has_bits & 0x00000200u) {
-      _this->_impl_.goal_center_to_penalty_mark_ = from._impl_.goal_center_to_penalty_mark_;
-    }
-    if (cached_has_bits & 0x00000400u) {
-      _this->_impl_.goal_height_ = from._impl_.goal_height_;
-    }
-    if (cached_has_bits & 0x00000800u) {
-      _this->_impl_.ball_radius_ = from._impl_.ball_radius_;
-    }
-    if (cached_has_bits & 0x00001000u) {
-      _this->_impl_.max_robot_radius_ = from._impl_.max_robot_radius_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -2282,8 +2082,8 @@ void SSL_GeometryFieldSize::InternalSwap(SSL_GeometryFieldSize* other) {
   _impl_.field_lines_.InternalSwap(&other->_impl_.field_lines_);
   _impl_.field_arcs_.InternalSwap(&other->_impl_.field_arcs_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SSL_GeometryFieldSize, _impl_.max_robot_radius_)
-      + sizeof(SSL_GeometryFieldSize::_impl_.max_robot_radius_)
+      PROTOBUF_FIELD_OFFSET(SSL_GeometryFieldSize, _impl_.penalty_area_width_)
+      + sizeof(SSL_GeometryFieldSize::_impl_.penalty_area_width_)
       - PROTOBUF_FIELD_OFFSET(SSL_GeometryFieldSize, _impl_.field_length_)>(
           reinterpret_cast<char*>(&_impl_.field_length_),
           reinterpret_cast<char*>(&other->_impl_.field_length_));

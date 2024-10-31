@@ -43,6 +43,7 @@ void ProtoListener::onVisionDataReceived(){
         qDebug("reading data");
         QByteArray data;
         data.resize(m_socket_vision->pendingDatagramSize());
+        m_socket_vision->readDatagram(data.data(), data.size());
         processVisionMessage(data);
     } else {
         qWarning("No data available in the datagram");
@@ -62,8 +63,8 @@ void ProtoListener::processElectronicMessage(const QByteArray& data) {
 void ProtoListener::processVisionMessage(const QByteArray& data) {
     SSL_WrapperPacket visionMessage;
     qDebug("Trying to process vision data...");
-    qDebug() << "incoming data size: " << data.size();
-    qDebug() << "Data content: " << data.toHex();
+    //qDebug() << "incoming data size: " << data.size();
+    //qDebug() << "Data content: " << data.toHex();
 
     if (visionMessage.ParseFromArray(data.data(), data.size())) {
         // Process robots

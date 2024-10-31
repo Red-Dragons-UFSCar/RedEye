@@ -64,8 +64,7 @@ const char descriptor_table_protodef_ssl_5fvision_5fwrapper_2eproto[] PROTOBUF_S
   "etection.proto\032\031ssl_vision_geometry.prot"
   "o\"`\n\021SSL_WrapperPacket\022&\n\tdetection\030\001 \001("
   "\0132\023.SSL_DetectionFrame\022#\n\010geometry\030\002 \001(\013"
-  "2\021.SSL_GeometryDataB5Z3github.com/RoboCu"
-  "p-SSL/ssl-vision-client/pkg/vision"
+  "2\021.SSL_GeometryData"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_ssl_5fvision_5fwrapper_2eproto_deps[2] = {
   &::descriptor_table_ssl_5fvision_5fdetection_2eproto,
@@ -73,7 +72,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_ssl_5fvision_5fwrap
 };
 static ::_pbi::once_flag descriptor_table_ssl_5fvision_5fwrapper_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ssl_5fvision_5fwrapper_2eproto = {
-    false, false, 234, descriptor_table_protodef_ssl_5fvision_5fwrapper_2eproto,
+    false, false, 179, descriptor_table_protodef_ssl_5fvision_5fwrapper_2eproto,
     "ssl_vision_wrapper.proto",
     &descriptor_table_ssl_5fvision_5fwrapper_2eproto_once, descriptor_table_ssl_5fvision_5fwrapper_2eproto_deps, 2, 1,
     schemas, file_default_instances, TableStruct_ssl_5fvision_5fwrapper_2eproto::offsets,

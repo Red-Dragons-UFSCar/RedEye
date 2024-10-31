@@ -175,12 +175,12 @@ const char descriptor_table_protodef_ssl_5fvision_5fdetection_2eproto[] PROTOBUF
   "\002(\r\022!\n\005balls\030\005 \003(\0132\022.SSL_DetectionBall\022*"
   "\n\rrobots_yellow\030\006 \003(\0132\023.SSL_DetectionRob"
   "ot\022(\n\013robots_blue\030\007 \003(\0132\023.SSL_DetectionR"
-  "obotB5Z3github.com/RoboCup-SSL/ssl-visio"
-  "n-client/pkg/vision"
+  "obotB8Z6github.com/RoboCup-SSL/ssl-simul"
+  "ation-protocol/pkg/sim"
   ;
 static ::_pbi::once_flag descriptor_table_ssl_5fvision_5fdetection_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ssl_5fvision_5fdetection_2eproto = {
-    false, false, 579, descriptor_table_protodef_ssl_5fvision_5fdetection_2eproto,
+    false, false, 582, descriptor_table_protodef_ssl_5fvision_5fdetection_2eproto,
     "ssl_vision_detection.proto",
     &descriptor_table_ssl_5fvision_5fdetection_2eproto_once, nullptr, 0, 3,
     schemas, file_default_instances, TableStruct_ssl_5fvision_5fdetection_2eproto::offsets,

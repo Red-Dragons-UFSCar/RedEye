@@ -30,7 +30,9 @@ public:
     }
 
     void updateRobotPosition(int robotId, double x, double y){
-        std::cout << robotId << x << y;
+        std::cout << "----------------------------------" << "\n";
+        std::cout << "ID: " << robotId << "X: " << x << "Y: " << y << "\n";
+        std::cout << "----------------------------------" << "\n";
     }
 
 private:
