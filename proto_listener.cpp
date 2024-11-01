@@ -5,10 +5,14 @@ ProtoListener::ProtoListener(RobotManager* manager, QObject *parent)
     m_manager(manager),
     m_socket_electronic(new QUdpSocket(this)),
     m_socket_vision(new QUdpSocket(this))
+
+
 {
     connect(m_socket_electronic, &QUdpSocket::readyRead, this, &ProtoListener::onElectronicDataReceived);
     connect(m_socket_vision, &QUdpSocket::readyRead, this, &ProtoListener::onVisionDataReceived);
 }
+// TODO json
+static const QHostAddress multicastAddress("224.5.23.2");
 
 ProtoListener::~ProtoListener(){
     m_socket_electronic->close();
@@ -26,11 +30,17 @@ void ProtoListener::startListeningElectro(int portElectro) {
 
 void ProtoListener::startListeningVision(int portVision) {
     // Bind to localhost on the specified port for the vision data
-    if (!m_socket_vision->bind(QHostAddress::LocalHost, portVision)) {
+    if (!m_socket_vision->bind(QHostAddress::AnyIPv4, portVision, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint)) {
         qWarning() << "Failed to bind vision socket on port" << portVision;
-    } else {
-        qDebug() << "Listening for vision data on port" << portVision;
     }
+
+    if (!m_socket_vision->joinMulticastGroup(multicastAddress)) {
+        qWarning() << "Failed to join multicast group" << multicastAddress.toString()
+        << ":" << m_socket_vision->errorString();
+    } else {
+        qDebug() << "Listening for vision data on multicast address" << multicastAddress.toString() << "port" << portVision;
+    }
+
 }
 
 void ProtoListener::onElectronicDataReceived(){

@@ -27,8 +27,8 @@ Rectangle {
         model: robotManager.robots
 
         Rectangle {
-            width: 20
-            height: 20
+            width: 60
+            height: 60
             color: model.color
             radius: width/2
 
@@ -38,7 +38,7 @@ Rectangle {
             Text {
                 text: model.robotId
                 anchors.centerIn: parent
-                color: "white"
+                color: "black"
                 font.bold: true
             }
         }
